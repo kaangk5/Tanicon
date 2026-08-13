@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tanicon AI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: #ffffff;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .header h1 {
+      color: #2563eb;
+      font-size: 28px;
+    }
+
+    .header p {
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .welcome {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    .welcome h2 {
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .welcome p {
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .chat {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    #messages {
+      min-height: 250px;
+      max-height: 400px;
+      overflow-y: auto;
+      margin-bottom: 15px;
+    }
+
+    .message {
+      padding: 12px 15px;
+      border-radius: 15px;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .bot {
+      background: #eef4ff;
+      color: #1e3a8a;
+    }
+
+    .user {
+      background: #2563eb;
+      color: white;
+      margin-left: 30px;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 10px;
+    }
+
+    input {
+      flex: 1;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    button {
+      border: none;
+      background: #2563eb;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    .warning {
+      margin-top: 20px;
+      padding: 12px;
+      background: #fff7ed;
+      color: #9a3412;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>🩺 Tanicon AI</h1>
+    <p>Sağlık konusunda bilgi asistanınız</p>
+  </div>
+
+  <div class="container">
+
+    <div class="welcome">
+      <h2>Merhaba 👋</h2>
+      <p>
+        Ben Tanicon. Sağlıkla ilgili sorularınızı
+        anlaşılır şekilde yanıtlamanıza yardımcı olmak için
+        tasarlanmış bir yapay zekâ asistanıyım.
+      </p>
+    </div>
+
+    <div class="chat">
+
+      <div id="messages">
+        <div class="message bot">
+          Merhaba! 👋 Sağlığınızla ilgili ne öğrenmek istiyorsunuz?
+        </div>
+      </div>
+
+      <div class="input-area">
+        <input
+          id="userInput"
+          type="text"
+          placeholder="Sorunuzu yazın..."
+          onkeydown="if(event.key==='Enter') sendMessage()"
+        >
+
+        <button onclick="sendMessage()">Gönder</button>
+      </div>
+
+      <div class="warning">
+        ⚠️ Tanicon tıbbi tanı koymaz ve doktorun yerini tutmaz.
+        Acil veya ciddi durumlarda sağlık kuruluşuna başvurun.
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function sendMessage() {
+
+      const input = document.getElementById("userInput");
+      const messages = document.getElementById("messages");
+
+      const text = input.value.trim();
+
+      if (text === "") return;
+
+      const userMessage = document.createElement("div");
+      userMessage.className = "message user";
+      userMessage.textContent = text;
