@@ -1,192 +1,985 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tanicon AI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanicon AI</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #111414;
+    color: white;
+    min-height: 100vh;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+.app {
+    max-width: 600px;
+    margin: auto;
+    min-height: 100vh;
+    background: #151919;
+}
+
+/* ---------------- HEADER ---------------- */
+
+.header {
+    padding: 22px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logoIcon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: #50d0cc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #101414;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logoText {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.menuButton {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    background: #252b2b;
+    color: white;
+    font-size: 20px;
+}
+
+/* ---------------- PAGES ---------------- */
+
+.page {
+    display: none;
+    padding: 10px 20px 110px;
+}
+
+.page.active {
+    display: block;
+}
+
+/* ---------------- HOME ---------------- */
+
+.hero {
+    text-align: center;
+    padding: 45px 15px 30px;
+}
+
+.heroIcon {
+    width: 110px;
+    height: 110px;
+    margin: auto;
+    border-radius: 32px;
+    background: #242b2b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
+    color: #50d0cc;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-top: 25px;
+}
+
+.hero h2 {
+    font-size: 21px;
+    line-height: 1.4;
+    margin-top: 12px;
+}
+
+.hero p {
+    color: #9da5a5;
+    line-height: 1.6;
+    margin-top: 18px;
+}
+
+.primaryButton {
+    width: 100%;
+    height: 60px;
+    border-radius: 20px;
+    background: #50d0cc;
+    color: #101414;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px;
+}
+
+.primaryButton:active {
+    transform: scale(.98);
+}
+
+/* ---------------- CARDS ---------------- */
+
+.sectionTitle {
+    font-size: 21px;
+    margin: 25px 0 15px;
+}
+
+.card {
+    background: #202626;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 14px;
+}
+
+.cardRow {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cardIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 15px;
+    background: #2b3535;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
+}
+
+.card h3 {
+    font-size: 17px;
+}
+
+.card p {
+    color: #929999;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+/* ---------------- ANALYSIS ---------------- */
+
+.analysisTitle {
+    font-size: 28px;
+    margin-top: 15px;
+}
+
+.analysisDescription {
+    color: #9da5a5;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 180px;
+    margin-top: 25px;
+    border: 1px solid #343c3c;
+    background: #202626;
+    color: white;
+    border-radius: 20px;
+    padding: 18px;
+    resize: none;
+    font-size: 16px;
+    outline: none;
+}
+
+textarea:focus {
+    border-color: #50d0cc;
+}
+
+.example {
+    color: #858d8d;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+/* ---------------- RESULT ---------------- */
+
+.result {
+    display: none;
+}
+
+.result.active {
+    display: block;
+}
+
+.resultCard {
+    background: #202626;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.resultCard h3 {
+    margin-bottom: 12px;
+}
+
+.possible {
+    padding: 13px;
+    background: #2b3333;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.warning {
+    margin-top: 20px;
+    padding: 16px;
+    background: #342d22;
+    color: #e8c889;
+    border-radius: 15px;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* ---------------- CHAT ---------------- */
+
+.chatMessages {
+    min-height: 350px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-top: 15px;
+}
+
+.message {
+    max-width: 88%;
+    padding: 15px;
+    border-radius: 18px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.message.ai {
+    background: #242c2c;
+}
+
+.message.user {
+    background: #3d6363;
+    margin-left: auto;
+}
+
+.chatInput {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.chatInput input {
+    flex: 1;
+    height: 52px;
+    border-radius: 18px;
+    border: none;
+    background: #242c2c;
+    color: white;
+    padding: 0 16px;
+    outline: none;
+}
+
+.sendButton {
+    width: 52px;
+    height: 52px;
+    border-radius: 17px;
+    background: #50d0cc;
+    font-size: 22px;
+}
+
+/* ---------------- PROFILE ---------------- */
+
+.profile {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    border-radius: 50%;
+    background: #50d0cc;
+    color: #101414;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+}
+
+.profile h2 {
+    margin-top: 15px;
+}
+
+.profile p {
+    color: #8f9999;
+    margin-top: 5px;
+}
+
+/* ---------------- BOTTOM NAV ---------------- */
+
+.bottomNav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    height: 78px;
+    background: #1c2222;
+    border-top: 1px solid #2d3434;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navButton {
+    background: transparent;
+    color: #7f8989;
+    font-size: 12px;
+    text-align: center;
+}
+
+.navButton span {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+
+.navButton.active {
+    color: #50d0cc;
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media (min-width: 601px) {
 
     body {
-      background: #f4f7fb;
-      min-height: 100vh;
+        background: #090b0b;
     }
 
-    .header {
-      background: #ffffff;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    .app {
+        box-shadow: 0 0 50px rgba(0,0,0,.4);
     }
 
-    .header h1 {
-      color: #2563eb;
-      font-size: 28px;
-    }
+}
 
-    .header p {
-      color: #666;
-      margin-top: 5px;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 30px auto;
-      padding: 20px;
-    }
-
-    .welcome {
-      background: white;
-      border-radius: 20px;
-      padding: 25px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-      margin-bottom: 20px;
-    }
-
-    .welcome h2 {
-      margin-bottom: 10px;
-      color: #222;
-    }
-
-    .welcome p {
-      color: #666;
-      line-height: 1.5;
-    }
-
-    .chat {
-      background: white;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
-
-    #messages {
-      min-height: 250px;
-      max-height: 400px;
-      overflow-y: auto;
-      margin-bottom: 15px;
-    }
-
-    .message {
-      padding: 12px 15px;
-      border-radius: 15px;
-      margin-bottom: 10px;
-      line-height: 1.4;
-    }
-
-    .bot {
-      background: #eef4ff;
-      color: #1e3a8a;
-    }
-
-    .user {
-      background: #2563eb;
-      color: white;
-      margin-left: 30px;
-    }
-
-    .input-area {
-      display: flex;
-      gap: 10px;
-    }
-
-    input {
-      flex: 1;
-      padding: 14px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      font-size: 16px;
-      outline: none;
-    }
-
-    button {
-      border: none;
-      background: #2563eb;
-      color: white;
-      padding: 14px 18px;
-      border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    button:active {
-      transform: scale(0.97);
-    }
-
-    .warning {
-      margin-top: 20px;
-      padding: 12px;
-      background: #fff7ed;
-      color: #9a3412;
-      border-radius: 12px;
-      font-size: 13px;
-      line-height: 1.4;
-    }
-  </style>
+</style>
 </head>
 
 <body>
 
-  <div class="header">
-    <h1>🩺 Tanicon AI</h1>
-    <p>Sağlık konusunda bilgi asistanınız</p>
-  </div>
+<div class="app">
 
-  <div class="container">
+<!-- HEADER -->
 
-    <div class="welcome">
-      <h2>Merhaba 👋</h2>
-      <p>
-        Ben Tanicon. Sağlıkla ilgili sorularınızı
-        anlaşılır şekilde yanıtlamanıza yardımcı olmak için
-        tasarlanmış bir yapay zekâ asistanıyım.
-      </p>
+<div class="header">
+
+    <div class="logo">
+        <div class="logoIcon">+</div>
+        <div class="logoText">Tanicon</div>
     </div>
 
-    <div class="chat">
+    <button class="menuButton" onclick="openPage('settings')">
+        ⚙
+    </button>
 
-      <div id="messages">
-        <div class="message bot">
-          Merhaba! 👋 Sağlığınızla ilgili ne öğrenmek istiyorsunuz?
+</div>
+
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <div class="heroIcon">
+            ♡
         </div>
-      </div>
 
-      <div class="input-area">
+        <h1>Tanicon</h1>
+
+        <h2>
+            Yapay Zeka Destekli<br>
+            Sağlık Asistanınız
+        </h2>
+
+        <p>
+            Belirtilerinizi anlatın ve sağlık
+            durumunuz hakkında anlaşılır
+            bilgiler alın.
+        </p>
+
+        <button
+            class="primaryButton"
+            onclick="openPage('analysis')">
+
+            Başlayalım
+
+        </button>
+
+    </div>
+
+
+    <h2 class="sectionTitle">
+        Tanicon ile neler yapabilirsiniz?
+    </h2>
+
+
+    <div class="card">
+
+        <div class="cardRow">
+
+            <div class="cardIcon">
+                🧠
+            </div>
+
+            <div>
+                <h3>AI Destekli Analiz</h3>
+                <p>
+                    Belirtilerinizi analiz ederek
+                    olası açıklamalar hakkında bilgi verir.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="cardRow">
+
+            <div class="cardIcon">
+                💬
+            </div>
+
+            <div>
+                <h3>Akıllı Sohbet</h3>
+                <p>
+                    Sağlıkla ilgili sorularınızı
+                    doğal dille sorabilirsiniz.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="cardRow">
+
+            <div class="cardIcon">
+                🔒
+            </div>
+
+            <div>
+                <h3>Gizlilik</h3>
+                <p>
+                    Sağlık bilgilerinizin korunmasına
+                    önem veren bir yapı.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ANALYSIS -->
+
+<section id="analysis" class="page">
+
+    <h1 class="analysisTitle">
+        Belirti Analizi
+    </h1>
+
+    <p class="analysisDescription">
+        Şu anda yaşadığınız belirtileri mümkün
+        olduğunca açık şekilde anlatın.
+    </p>
+
+
+    <textarea
+        id="symptoms"
+        placeholder="Örneğin: 2 gündür başım ağrıyor, halsizim ve zaman zaman midem bulanıyor..."
+    ></textarea>
+
+    <p class="example">
+        💡 Belirtilerin ne zaman başladığını ve
+        ne kadar sürdüğünü belirtmek yardımcı olabilir.
+    </p>
+
+
+    <button
+        class="primaryButton"
+        onclick="analyze()">
+
+        🔍 Belirtileri Analiz Et
+
+    </button>
+
+
+    <div id="result" class="result">
+
+        <div class="resultCard">
+
+            <h3>📋 Genel Değerlendirme</h3>
+
+            <p id="resultText">
+                Belirtileriniz değerlendiriliyor...
+            </p>
+
+        </div>
+
+
+        <div class="resultCard">
+
+            <h3>🧠 Olası Açıklamalar</h3>
+
+            <div class="possible">
+                Bu bölüm AI bağlantısı
+                kurulduğunda otomatik doldurulacak.
+            </div>
+
+        </div>
+
+
+        <div class="warning">
+
+            ⚠️ Bu değerlendirme tıbbi tanı değildir.
+            Ciddi veya acil belirtileriniz varsa
+            gecikmeden bir sağlık kuruluşuna başvurun.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CHAT -->
+
+<section id="chat" class="page">
+
+    <h1 class="analysisTitle">
+        Tanicon AI
+    </h1>
+
+    <div
+        id="chatMessages"
+        class="chatMessages">
+
+        <div class="message ai">
+
+            Merhaba 👋<br><br>
+
+            Ben Tanicon AI. Sağlıkla ilgili
+            sorularınızı yazabilirsiniz.
+
+        </div>
+
+    </div>
+
+
+    <div class="chatInput">
+
         <input
-          id="userInput"
-          type="text"
-          placeholder="Sorunuzu yazın..."
-          onkeydown="if(event.key==='Enter') sendMessage()"
+            id="chatInput"
+            placeholder="Mesajınızı yazın..."
+            onkeydown="if(event.key==='Enter') sendChat()"
         >
 
-        <button onclick="sendMessage()">Gönder</button>
-      </div>
+        <button
+            class="sendButton"
+            onclick="sendChat()">
 
-      <div class="warning">
-        ⚠️ Tanicon tıbbi tanı koymaz ve doktorun yerini tutmaz.
-        Acil veya ciddi durumlarda sağlık kuruluşuna başvurun.
-      </div>
+            ➤
+
+        </button>
 
     </div>
 
-  </div>
+</section>
 
-  <script>
-    function sendMessage() {
 
-      const input = document.getElementById("userInput");
-      const messages = document.getElementById("messages");
+<!-- HISTORY -->
 
-      const text = input.value.trim();
+<section id="history" class="page">
 
-      if (text === "") return;
+    <h1 class="analysisTitle">
+        Geçmiş
+    </h1>
 
-      const userMessage = document.createElement("div");
-      userMessage.className = "message user";
-      userMessage.textContent = text;
+    <p class="analysisDescription">
+        Önceki değerlendirmeleriniz burada
+        görüntülenecek.
+    </p>
+
+
+    <div class="card">
+
+        <div class="cardRow">
+
+            <div class="cardIcon">
+                🩺
+            </div>
+
+            <div>
+                <h3>Henüz geçmiş yok</h3>
+                <p>
+                    İlk analizinizden sonra
+                    burada görünecek.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile" class="page">
+
+    <div class="profile">
+
+        <div class="avatar">
+            👤
+        </div>
+
+        <h2>Profil</h2>
+
+        <p>
+            Sağlık bilgilerinizi buradan
+            yönetebilirsiniz.
+        </p>
+
+    </div>
+
+
+    <h2 class="sectionTitle">
+        Sağlık Bilgileri
+    </h2>
+
+
+    <div class="card">
+        <div class="cardRow">
+
+            <div class="cardIcon">
+                🎂
+            </div>
+
+            <div>
+                <h3>Yaş</h3>
+                <p>Henüz belirtilmedi</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="cardRow">
+
+            <div class="cardIcon">
+                ⚕️
+            </div>
+
+            <div>
+                <h3>Sağlık Geçmişi</h3>
+                <p>Henüz belirtilmedi</p>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+<!-- SETTINGS -->
+
+<section id="settings" class="page">
+
+    <h1 class="analysisTitle">
+        Ayarlar
+    </h1>
+
+
+    <div class="card">
+
+        <div class="cardRow">
+
+            <div class="cardIcon">
+                🔔
+            </div>
+
+            <div>
+                <h3>Bildirimler</h3>
+                <p>
+                    Bildirim ayarları
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="cardRow">
+
+            <div class="cardIcon">
+                🌙
+            </div>
+
+            <div>
+                <h3>Koyu Tema</h3>
+                <p>
+                    Tanicon koyu tema kullanıyor.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="cardRow">
+
+            <div class="cardIcon">
+                🔐
+            </div>
+
+            <div>
+                <h3>Gizlilik</h3>
+                <p>
+                    Sağlık bilgileriniz hassas veridir.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BOTTOM NAV -->
+
+<div class="bottomNav">
+
+    <button
+        class="navButton active"
+        onclick="openPage('home')">
+
+        <span>⌂</span>
+        Ana Sayfa
+
+    </button>
+
+
+    <button
+        class="navButton"
+        onclick="openPage('analysis')">
+
+        <span>🧠</span>
+        Analiz
+
+    </button>
+
+
+    <button
+        class="navButton"
+        onclick="openPage('chat')">
+
+        <span>💬</span>
+        Sohbet
+
+    </button>
+
+
+    <button
+        class="navButton"
+        onclick="openPage('history')">
+
+        <span>📋</span>
+        Geçmiş
+
+    </button>
+
+
+    <button
+        class="navButton"
+        onclick="openPage('profile')">
+
+        <span>👤</span>
+        Profil
+
+    </button>
+
+</div>
+
+</div>
+
+
+<script>
+
+function openPage(pageName) {
+
+    const pages =
+        document.querySelectorAll(".page");
+
+    pages.forEach(function(page) {
+
+        page.classList.remove("active");
+
+    });
+
+
+    const selected =
+        document.getElementById(pageName);
+
+    if (selected) {
+
+        selected.classList.add("active");
+
+    }
+
+
+    const buttons =
+        document.querySelectorAll(".navButton");
+
+    buttons.forEach(function(button) {
+
+        button.classList.remove("active");
+
+    });
+
+}
+
+
+/* ANALİZ */
+
+function analyze() {
+
+    const symptoms =
+        document.getElementById("symptoms").value.trim();
+
+    if (symptoms === "") {
+
+        alert("Lütfen önce belirtilerinizi yazın.");
+
+        return;
+
+    }
+
+
+    const result =
+        document.getElementById("result");
+
+    const resultText =
+        document.getElementById("resultText");
+
+
+    result.classList.add("active");
+
+
+    resultText.innerHTML =
+        "Belirtileriniz alındı.<br><br>" +
+        "Gerçek AI bağlantısı bir sonraki " +
+        "aşamada eklenecek. Bu sürüm yalnızca " +
+        "arayüz testidir.";
+
+}
+
+
+/* CHAT */
+
+function sendChat() {
+
+    const input =
+        document.getElementById("chatInput");
+
+    const messages =
+        document.getElementById("chatMessages");
+
+
+    const text =
+        input.value.trim();
+
+
+    if (text === "") return;
+
+
+    const user =
+        document.createElement("div");
+
+    user.className =
+        "message user";
+
+    user.textContent =
+        text;
+
+
+    messages.appendChild(user);
+
+
+    input.value = "";
+
+
+    setTimeout(function() {
+
+        const ai =
+            document.createElement("div");
+
+        ai.className =
+            "message ai";
+
+        ai.textContent =
+            "Mesajınızı aldım. Gerçek yapay zeka " +
+            "bağlantısını bir sonraki aşamada " +
+            "ekleyeceğiz.";
+
+
+        messages.appendChild(ai);
+
+
+        messages.scrollTop =
+            messages.scrollHeight;
+
+    }, 500);
+
+}
+
+</script>
+
+</body>
+</html>
