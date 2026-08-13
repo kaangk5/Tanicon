@@ -2,387 +2,397 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#151919">
 <title>Tanicon AI</title>
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+body{
+ background:#111414;
+ color:#fff;
+ min-height:100vh
 }
 
-body {
-    background: #111414;
-    color: white;
-    min-height: 100vh;
+button{
+ border:0;
+ cursor:pointer
 }
 
-button {
-    border: none;
-    cursor: pointer;
+.app{
+ max-width:600px;
+ margin:auto;
+ min-height:100vh;
+ background:#151919
 }
 
-.app {
-    max-width: 600px;
-    margin: auto;
-    min-height: 100vh;
-    background: #151919;
+.header{
+ padding:20px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center
 }
 
-/* HEADER */
-
-.header {
-    padding: 22px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.logo{
+ display:flex;
+ align-items:center;
+ gap:10px
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.logoIcon{
+ width:42px;
+ height:42px;
+ border-radius:14px;
+ background:#50d0cc;
+ color:#101414;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:25px;
+ font-weight:bold
 }
 
-.logoIcon {
-    width: 42px;
-    height: 42px;
-    border-radius: 14px;
-    background: #50d0cc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #101414;
-    font-size: 25px;
-    font-weight: bold;
+.logoText{
+ font-size:22px;
+ font-weight:bold
 }
 
-.logoText {
-    font-size: 22px;
-    font-weight: 700;
+.menuButton{
+ width:42px;
+ height:42px;
+ border-radius:13px;
+ background:#252b2b;
+ color:white;
+ font-size:20px
 }
 
-.menuButton {
-    width: 42px;
-    height: 42px;
-    border-radius: 13px;
-    background: #252b2b;
-    color: white;
-    font-size: 20px;
+.page{
+ display:none;
+ padding:10px 20px 105px
 }
 
-/* PAGES */
-
-.page {
-    display: none;
-    padding: 10px 20px 110px;
+.page.active{
+ display:block
 }
 
-.page.active {
-    display: block;
+.hero{
+ text-align:center;
+ padding:35px 10px
 }
 
-/* HOME */
-
-.hero {
-    text-align: center;
-    padding: 45px 15px 30px;
+.heroIcon{
+ width:105px;
+ height:105px;
+ margin:auto;
+ border-radius:30px;
+ background:#242b2b;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:60px;
+ color:#50d0cc
 }
 
-.heroIcon {
-    width: 110px;
-    height: 110px;
-    margin: auto;
-    border-radius: 32px;
-    background: #242b2b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 65px;
-    color: #50d0cc;
+.hero h1{
+ font-size:38px;
+ margin-top:22px
 }
 
-.hero h1 {
-    font-size: 38px;
-    margin-top: 25px;
+.hero h2{
+ font-size:20px;
+ line-height:1.4;
+ margin-top:10px
 }
 
-.hero h2 {
-    font-size: 21px;
-    line-height: 1.4;
-    margin-top: 12px;
+.hero p{
+ color:#9da5a5;
+ line-height:1.6;
+ margin-top:16px
 }
 
-.hero p {
-    color: #9da5a5;
-    line-height: 1.6;
-    margin-top: 18px;
+.primaryButton{
+ width:100%;
+ min-height:58px;
+ margin-top:22px;
+ padding:12px 18px;
+ border-radius:19px;
+ background:#50d0cc;
+ color:#101414;
+ font-size:17px;
+ font-weight:bold
 }
 
-.primaryButton {
-    width: 100%;
-    min-height: 60px;
-    border-radius: 20px;
-    background: #50d0cc;
-    color: #101414;
-    font-size: 18px;
-    font-weight: 700;
-    margin-top: 30px;
-    padding: 12px 20px;
+.primaryButton:disabled{
+ opacity:.55
 }
 
-.primaryButton:active {
-    transform: scale(.98);
+.sectionTitle{
+ font-size:21px;
+ margin:22px 0 14px
 }
 
-/* CARDS */
-
-.sectionTitle {
-    font-size: 21px;
-    margin: 25px 0 15px;
+.card{
+ background:#202626;
+ border-radius:20px;
+ padding:18px;
+ margin-bottom:13px
 }
 
-.card {
-    background: #202626;
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 14px;
+.cardRow{
+ display:flex;
+ gap:14px;
+ align-items:center
 }
 
-.cardRow {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.cardIcon{
+ width:48px;
+ height:48px;
+ min-width:48px;
+ border-radius:15px;
+ background:#2b3535;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:22px
 }
 
-.cardIcon {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    border-radius: 15px;
-    background: #2b3535;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 23px;
+.card h3{
+ font-size:16px
 }
 
-.card h3 {
-    font-size: 17px;
+.card p{
+ color:#929999;
+ line-height:1.45;
+ margin-top:5px
 }
 
-.card p {
-    color: #929999;
-    margin-top: 5px;
-    line-height: 1.4;
+.title{
+ font-size:28px;
+ margin-top:10px
 }
 
-/* ANALYSIS */
-
-.analysisTitle {
-    font-size: 28px;
-    margin-top: 15px;
+.description{
+ color:#9da5a5;
+ line-height:1.55;
+ margin-top:9px
 }
 
-.analysisDescription {
-    color: #9da5a5;
-    line-height: 1.5;
-    margin-top: 10px;
+textarea{
+ width:100%;
+ min-height:170px;
+ margin-top:22px;
+ border:1px solid #343c3c;
+ background:#202626;
+ color:#fff;
+ border-radius:19px;
+ padding:17px;
+ resize:none;
+ font-size:16px;
+ outline:none
 }
 
-textarea {
-    width: 100%;
-    min-height: 180px;
-    margin-top: 25px;
-    border: 1px solid #343c3c;
-    background: #202626;
-    color: white;
-    border-radius: 20px;
-    padding: 18px;
-    resize: none;
-    font-size: 16px;
-    outline: none;
+textarea:focus{
+ border-color:#50d0cc
 }
 
-textarea:focus {
-    border-color: #50d0cc;
+.result{
+ display:none
 }
 
-.example {
-    color: #858d8d;
-    font-size: 13px;
-    margin-top: 10px;
+.result.active{
+ display:block
 }
 
-/* RESULT */
-
-.result {
-    display: none;
+.resultCard{
+ background:#202626;
+ border-radius:20px;
+ padding:19px;
+ margin-top:18px
 }
 
-.result.active {
-    display: block;
+.resultText{
+ color:#e7eeee;
+ line-height:1.65;
+ margin-top:12px
 }
 
-.resultCard {
-    background: #202626;
-    border-radius: 20px;
-    padding: 20px;
-    margin-top: 20px;
+.warning{
+ background:#342d22;
+ color:#e8c889;
+ padding:15px;
+ border-radius:15px;
+ margin-top:15px;
+ line-height:1.5;
+ font-size:14px
 }
 
-.resultCard h3 {
-    margin-bottom: 12px;
+.emergency{
+ display:none;
+ background:#472323;
+ color:#ffd0d0;
+ padding:17px;
+ border-radius:17px;
+ margin-top:18px;
+ line-height:1.5
 }
 
-.resultText {
-    color: #e6eeee;
-    line-height: 1.65;
+.emergency.active{
+ display:block
 }
 
-.warning {
-    margin-top: 20px;
-    padding: 16px;
-    background: #342d22;
-    color: #e8c889;
-    border-radius: 15px;
-    line-height: 1.5;
-    font-size: 14px;
+.uploadBox{
+ margin-top:22px;
+ border:2px dashed #3b4949;
+ border-radius:20px;
+ padding:28px 18px;
+ text-align:center;
+ background:#1b2121
 }
 
-/* CHAT */
-
-.chatMessages {
-    min-height: 350px;
-    max-height: 500px;
-    overflow-y: auto;
-    padding-top: 15px;
+.uploadIcon{
+ font-size:45px;
+ margin-bottom:10px
 }
 
-.message {
-    max-width: 88%;
-    padding: 15px;
-    border-radius: 18px;
-    margin-bottom: 12px;
-    line-height: 1.5;
+.uploadBox p{
+ color:#929999;
+ line-height:1.5;
+ margin-top:7px
 }
 
-.message.ai {
-    background: #242c2c;
+.fileButton{
+ display:inline-block;
+ margin-top:17px;
+ background:#50d0cc;
+ color:#101414;
+ padding:14px 20px;
+ border-radius:15px;
+ font-weight:bold
 }
 
-.message.user {
-    background: #3d6363;
-    margin-left: auto;
+input[type=file]{
+ display:none
 }
 
-.chatInput {
-    display: flex;
-    gap: 8px;
-    margin-top: 15px;
+.fileName{
+ color:#50d0cc;
+ margin-top:14px;
+ word-break:break-word
 }
 
-.chatInput input {
-    flex: 1;
-    height: 52px;
-    border-radius: 18px;
-    border: none;
-    background: #242c2c;
-    color: white;
-    padding: 0 16px;
-    outline: none;
-    font-size: 15px;
+.preview{
+ max-width:100%;
+ max-height:230px;
+ border-radius:15px;
+ margin-top:15px;
+ display:none
 }
 
-.sendButton {
-    width: 52px;
-    height: 52px;
-    border-radius: 17px;
-    background: #50d0cc;
-    font-size: 22px;
+.infoInput{
+ width:100%;
+ height:52px;
+ margin-top:13px;
+ border:1px solid #343c3c;
+ border-radius:16px;
+ background:#202626;
+ color:#fff;
+ padding:0 15px;
+ font-size:15px;
+ outline:none
 }
 
-/* PROFILE */
-
-.profile {
-    text-align: center;
-    padding-top: 30px;
+.chatMessages{
+ min-height:330px;
+ max-height:470px;
+ overflow-y:auto;
+ padding-top:15px
 }
 
-.avatar {
-    width: 90px;
-    height: 90px;
-    margin: auto;
-    border-radius: 50%;
-    background: #50d0cc;
-    color: #101414;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 35px;
+.message{
+ max-width:88%;
+ padding:14px;
+ border-radius:18px;
+ margin-bottom:11px;
+ line-height:1.5
 }
 
-.profile h2 {
-    margin-top: 15px;
+.message.ai{
+ background:#242c2c
 }
 
-.profile p {
-    color: #8f9999;
-    margin-top: 5px;
+.message.user{
+ background:#3d6363;
+ margin-left:auto
 }
 
-/* BOTTOM NAV */
-
-.bottomNav {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 600px;
-    height: 78px;
-    background: #1c2222;
-    border-top: 1px solid #2d3434;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 100;
+.chatInput{
+ display:flex;
+ gap:8px;
+ margin-top:12px
 }
 
-.navButton {
-    background: transparent;
-    color: #7f8989;
-    font-size: 11px;
-    text-align: center;
+.chatInput input{
+ flex:1;
+ height:52px;
+ border-radius:17px;
+ border:0;
+ background:#242c2c;
+ color:#fff;
+ padding:0 15px;
+ outline:none
 }
 
-.navButton span {
-    display: block;
-    font-size: 22px;
-    margin-bottom: 4px;
+.sendButton{
+ width:52px;
+ height:52px;
+ border-radius:17px;
+ background:#50d0cc;
+ font-size:21px
 }
 
-.navButton.active {
-    color: #50d0cc;
+.bottomNav{
+ position:fixed;
+ bottom:0;
+ left:50%;
+ transform:translateX(-50%);
+ width:100%;
+ max-width:600px;
+ height:76px;
+ background:#1c2222;
+ border-top:1px solid #2d3434;
+ display:flex;
+ justify-content:space-around;
+ align-items:center;
+ z-index:100
 }
 
-/* MOBILE */
-
-@media (min-width: 601px) {
-
-    body {
-        background: #090b0b;
-    }
-
-    .app {
-        box-shadow: 0 0 50px rgba(0,0,0,.4);
-    }
-
+.navButton{
+ background:transparent;
+ color:#7f8989;
+ font-size:10px
 }
 
+.navButton span{
+ display:block;
+ font-size:21px;
+ margin-bottom:3px
+}
+
+.navButton.active{
+ color:#50d0cc
+}
+
+.historyEmpty{
+ text-align:center;
+ padding:50px 20px;
+ color:#899292
+}
+
+@media(min-width:601px){
+ body{background:#090b0b}
+ .app{box-shadow:0 0 50px rgba(0,0,0,.4)}
+}
 </style>
 </head>
 
@@ -390,914 +400,951 @@ textarea:focus {
 
 <div class="app">
 
-<!-- HEADER -->
+<header class="header">
+ <div class="logo">
+  <div class="logoIcon">+</div>
+  <div class="logoText">Tanicon</div>
+ </div>
 
-<div class="header">
-
-    <div class="logo">
-
-        <div class="logoIcon">
-            +
-        </div>
-
-        <div class="logoText">
-            Tanicon
-        </div>
-
-    </div>
-
-    <button
-        class="menuButton"
-        onclick="openPage('settings')">
-
-        ⚙
-
-    </button>
-
-</div>
+ <button class="menuButton" onclick="openPage('profile')">⚙</button>
+</header>
 
 
-<!-- HOME -->
+<!-- ANA SAYFA -->
 
 <section id="home" class="page active">
 
-    <div class="hero">
+ <div class="hero">
 
-        <div class="heroIcon">
-            ♡
-        </div>
+  <div class="heroIcon">♡</div>
 
-        <h1>
-            Tanicon
-        </h1>
+  <h1>Tanicon</h1>
 
-        <h2>
-            Yapay Zeka Destekli<br>
-            Sağlık Asistanınız
-        </h2>
+  <h2>
+   Yapay Zeka Destekli<br>
+   Sağlık Asistanınız
+  </h2>
 
-        <p>
-            Belirtilerinizi anlatın ve sağlık
-            durumunuz hakkında anlaşılır
-            bilgiler alın.
-        </p>
+  <p>
+   Belirtilerinizi, tahlillerinizi ve sağlık
+   sorularınızı anlamanıza yardımcı olur.
+  </p>
 
-        <button
-            class="primaryButton"
-            onclick="openPage('analysis')">
+  <button class="primaryButton"
+   onclick="openPage('analysis')">
+   Başlayalım
+  </button>
 
-            Başlayalım
+ </div>
 
-        </button>
+ <h2 class="sectionTitle">Tanicon ile neler yapabilirsiniz?</h2>
 
-    </div>
+ <div class="card">
+  <div class="cardRow">
+   <div class="cardIcon">🩺</div>
+   <div>
+    <h3>Belirti Analizi</h3>
+    <p>Belirtileriniz hakkında AI destekli genel değerlendirme.</p>
+   </div>
+  </div>
+ </div>
 
+ <div class="card">
+  <div class="cardRow">
+   <div class="cardIcon">🧪</div>
+   <div>
+    <h3>Tahlil Analizi</h3>
+    <p>Kan tahlili ve laboratuvar raporlarını inceleme.</p>
+   </div>
+  </div>
+ </div>
 
-    <h2 class="sectionTitle">
-        Tanicon ile neler yapabilirsiniz?
-    </h2>
+ <div class="card">
+  <div class="cardRow">
+   <div class="cardIcon">💊</div>
+   <div>
+    <h3>İlaç Bilgisi</h3>
+    <p>İlaçlar hakkında genel bilgi ve güvenlik uyarıları.</p>
+   </div>
+  </div>
+ </div>
 
-
-    <div class="card">
-
-        <div class="cardRow">
-
-            <div class="cardIcon">
-                🧠
-            </div>
-
-            <div>
-
-                <h3>
-                    AI Destekli Analiz
-                </h3>
-
-                <p>
-                    Belirtilerinizi analiz ederek
-                    olası açıklamalar hakkında bilgi verir.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="cardRow">
-
-            <div class="cardIcon">
-                💬
-            </div>
-
-            <div>
-
-                <h3>
-                    Akıllı Sohbet
-                </h3>
-
-                <p>
-                    Sağlıkla ilgili sorularınızı
-                    doğal dille sorabilirsiniz.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="cardRow">
-
-            <div class="cardIcon">
-                🔒
-            </div>
-
-            <div>
-
-                <h3>
-                    Gizlilik
-                </h3>
-
-                <p>
-                    Sağlık bilgilerinizin korunmasına
-                    önem veren bir yapı.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
+ <div class="card">
+  <div class="cardRow">
+   <div class="cardIcon">🌿</div>
+   <div>
+    <h3>Bitkisel Ürünler</h3>
+    <p>Bitkisel ürünlerin kanıtları ve olası etkileşimleri.</p>
+   </div>
+  </div>
+ </div>
 
 </section>
 
 
-<!-- ANALYSIS -->
+<!-- BELİRTİ ANALİZİ -->
 
 <section id="analysis" class="page">
 
-    <h1 class="analysisTitle">
-        Belirti Analizi
-    </h1>
+ <h1 class="title">Belirti Analizi</h1>
 
-    <p class="analysisDescription">
-        Şu anda yaşadığınız belirtileri mümkün
-        olduğunca açık şekilde anlatın.
-    </p>
+ <p class="description">
+  Yaşadığınız belirtileri mümkün olduğunca
+  açık şekilde yazın.
+ </p>
 
+ <textarea id="symptoms"
+  placeholder="Örneğin: 2 gündür başım ağrıyor ve halsizim..."></textarea>
 
-    <textarea
-        id="symptoms"
-        placeholder="Örneğin: 2 gündür başım ağrıyor, halsizim ve zaman zaman midem bulanıyor..."
-    ></textarea>
+ <input class="infoInput"
+  id="age"
+  type="number"
+  placeholder="Yaşınız (isteğe bağlı)">
 
+ <input class="infoInput"
+  id="medications"
+  placeholder="Kullandığınız ilaçlar (isteğe bağlı)">
 
-    <p class="example">
+ <button id="analyzeButton"
+  class="primaryButton"
+  onclick="analyze()">
+  🔍 Belirtileri Analiz Et
+ </button>
 
-        💡 Belirtilerin ne zaman başladığını ve
-        ne kadar sürdüğünü belirtmek yardımcı olabilir.
+ <div id="emergency"
+  class="emergency">
+  🚨 <strong>Acil durum uyarısı</strong><br><br>
+  Belirtileriniz acil değerlendirme gerektirebilecek
+  bir duruma işaret ediyor olabilir. Gecikmeden
+  uygun bir sağlık kuruluşundan yardım alın.
+ </div>
 
-    </p>
+ <div id="result" class="result">
 
+  <div class="resultCard">
+   <h3>🧠 Tanicon AI Değerlendirmesi</h3>
+   <div id="resultText" class="resultText"></div>
+  </div>
 
-    <button
-        id="analyzeButton"
-        class="primaryButton"
-        onclick="analyze()">
+  <div class="warning">
+   ⚠️ Bu sonuç tıbbi tanı değildir ve doktor muayenesinin
+   yerini tutmaz.
+  </div>
 
-        🔍 Belirtileri Analiz Et
-
-    </button>
-
-
-    <div
-        id="result"
-        class="result">
-
-        <div class="resultCard">
-
-            <h3>
-                🧠 Tanicon AI Değerlendirmesi
-            </h3>
-
-            <div
-                id="resultText"
-                class="resultText">
-
-                Belirtileriniz analiz edilecek.
-
-            </div>
-
-        </div>
-
-
-        <div class="warning">
-
-            ⚠️ Tanicon tarafından verilen bilgiler
-            tıbbi tanı değildir ve doktor muayenesinin
-            yerini tutmaz. Ciddi veya acil belirtileriniz
-            varsa gecikmeden sağlık kuruluşuna başvurun.
-
-        </div>
-
-    </div>
+ </div>
 
 </section>
 
 
-<!-- CHAT -->
+<!-- TAHLİL -->
+
+<section id="labs" class="page">
+
+ <h1 class="title">🧪 Tahlil Analizi</h1>
+
+ <p class="description">
+  Kan tahlili veya laboratuvar raporunuzu
+  fotoğraf ya da PDF olarak seçebilirsiniz.
+ </p>
+
+ <div class="uploadBox">
+
+  <div class="uploadIcon">📄</div>
+
+  <strong>Tahlil dosyanızı seçin</strong>
+
+  <p>
+   JPG, PNG, WebP veya PDF
+  </p>
+
+  <label class="fileButton" for="labFile">
+   📎 Dosya Seç
+  </label>
+
+  <input
+   id="labFile"
+   type="file"
+   accept=".jpg,.jpeg,.png,.webp,.pdf"
+   onchange="selectLabFile(event)">
+
+  <div id="fileName" class="fileName"></div>
+
+  <img id="preview"
+   class="preview">
+
+ </div>
+
+ <button id="labButton"
+  class="primaryButton"
+  onclick="analyzeLab()"
+  disabled>
+  🔬 Tahlili Analiz Et
+ </button>
+
+ <div id="labResult" class="result">
+
+  <div class="resultCard">
+   <h3>🧪 Tahlil Değerlendirmesi</h3>
+   <div id="labResultText" class="resultText"></div>
+  </div>
+
+  <div class="warning">
+   ⚠️ Laboratuvar sonuçlarının anlamı yaş,
+   klinik durum, kullanılan ilaçlar ve laboratuvarın
+   referans aralıklarıyla birlikte değerlendirilmelidir.
+  </div>
+
+ </div>
+
+</section>
+
+
+<!-- İLAÇ -->
+
+<section id="medicationsPage" class="page">
+
+ <h1 class="title">💊 İlaç Bilgisi</h1>
+
+ <p class="description">
+  Bir ilacın kullanım amacı, yaygın yan etkileri
+  ve önemli güvenlik bilgileri hakkında soru sorun.
+ </p>
+
+ <input id="drugInput"
+  class="infoInput"
+  placeholder="Örn: Parasetamol">
+
+ <button class="primaryButton"
+  onclick="drugInfo()">
+  💊 Bilgi Al
+ </button>
+
+ <div id="drugResult" class="result">
+
+  <div class="resultCard">
+   <h3>İlaç Bilgisi</h3>
+   <div id="drugText" class="resultText"></div>
+  </div>
+
+ </div>
+
+</section>
+
+
+<!-- BİTKİSEL -->
+
+<section id="herbal" class="page">
+
+ <h1 class="title">🌿 Bitkisel Ürünler</h1>
+
+ <p class="description">
+  Bitkisel ürünlerin kullanım alanları,
+  kanıt düzeyi ve olası etkileşimleri hakkında bilgi alın.
+ </p>
+
+ <input id="herbalInput"
+  class="infoInput"
+  placeholder="Örn: Zerdeçal">
+
+ <button class="primaryButton"
+  onclick="herbalInfo()">
+  🌿 Bilgi Al
+ </button>
+
+ <div id="herbalResult" class="result">
+
+  <div class="resultCard">
+   <h3>🌿 Bitkisel Ürün Bilgisi</h3>
+   <div id="herbalText" class="resultText"></div>
+  </div>
+
+ </div>
+
+</section>
+
+
+<!-- SOHBET -->
 
 <section id="chat" class="page">
 
-    <h1 class="analysisTitle">
-        Tanicon AI
-    </h1>
+ <h1 class="title">💬 Tanicon AI</h1>
 
-    <p class="analysisDescription">
-        Sağlıkla ilgili sorunuzu yazabilirsiniz.
-    </p>
+ <p class="description">
+  Sağlıkla ilgili sorunuzu doğal dille sorabilirsiniz.
+ </p>
 
+ <div id="chatMessages" class="chatMessages">
 
-    <div
-        id="chatMessages"
-        class="chatMessages">
+  <div class="message ai">
+   Merhaba 👋<br><br>
+   Ben Tanicon AI. Sağlıkla ilgili sorularınızı
+   yazabilirsiniz.
+  </div>
 
-        <div class="message ai">
+ </div>
 
-            Merhaba 👋<br><br>
+ <div class="chatInput">
 
-            Ben Tanicon AI. Sağlıkla ilgili
-            sorularınızı yazabilirsiniz.
+  <input id="chatInput"
+   placeholder="Mesajınızı yazın..."
+   onkeydown="if(event.key==='Enter')sendChat()">
 
-        </div>
+  <button class="sendButton"
+   onclick="sendChat()">➤</button>
 
-    </div>
-
-
-    <div class="chatInput">
-
-        <input
-            id="chatInput"
-            placeholder="Mesajınızı yazın..."
-            onkeydown="if(event.key==='Enter') sendChat()"
-        >
-
-        <button
-            class="sendButton"
-            onclick="sendChat()">
-
-            ➤
-
-        </button>
-
-    </div>
+ </div>
 
 </section>
 
 
-<!-- HISTORY -->
+<!-- GEÇMİŞ -->
 
 <section id="history" class="page">
 
-    <h1 class="analysisTitle">
-        Geçmiş
-    </h1>
+ <h1 class="title">📋 Geçmiş</h1>
 
-    <p class="analysisDescription">
-        Önceki değerlendirmeleriniz burada
-        görüntülenecek.
-    </p>
+ <p class="description">
+  Yaptığınız analizler burada tutulur.
+ </p>
 
-
-    <div class="card">
-
-        <div class="cardRow">
-
-            <div class="cardIcon">
-                📋
-            </div>
-
-            <div>
-
-                <h3>
-                    Henüz geçmiş yok
-                </h3>
-
-                <p>
-                    İlk analizinizden sonra
-                    burada görünecek.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
+ <div id="historyList"></div>
 
 </section>
 
 
-<!-- PROFILE -->
+<!-- PROFİL -->
 
 <section id="profile" class="page">
 
-    <div class="profile">
+ <h1 class="title">👤 Profil</h1>
 
-        <div class="avatar">
-            👤
-        </div>
+ <p class="description">
+  Analizlerinizi kişiselleştirmek için
+  isteğe bağlı bilgilerinizi girebilirsiniz.
+ </p>
 
-        <h2>
-            Profil
-        </h2>
+ <input id="profileAge"
+  class="infoInput"
+  type="number"
+  placeholder="Yaş">
 
-        <p>
-            Sağlık bilgilerinizi buradan
-            yönetebilirsiniz.
-        </p>
+ <input id="profileName"
+  class="infoInput"
+  placeholder="Adınız (isteğe bağlı)">
 
-    </div>
+ <button class="primaryButton"
+  onclick="saveProfile()">
+  💾 Profili Kaydet
+ </button>
 
-
-    <h2 class="sectionTitle">
-        Sağlık Bilgileri
-    </h2>
-
-
-    <div class="card">
-
-        <div class="cardRow">
-
-            <div class="cardIcon">
-                🎂
-            </div>
-
-            <div>
-
-                <h3>
-                    Yaş
-                </h3>
-
-                <p>
-                    Henüz belirtilmedi
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="cardRow">
-
-            <div class="cardIcon">
-                ⚕️
-            </div>
-
-            <div>
-
-                <h3>
-                    Sağlık Geçmişi
-                </h3>
-
-                <p>
-                    Henüz belirtilmedi
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
+ <div class="card" style="margin-top:20px">
+  <h3>🔐 Gizlilik</h3>
+  <p>
+   Sağlık bilgilerinizi gereksiz yere paylaşmayın.
+   Acil durumlarda profesyonel sağlık hizmetlerine başvurun.
+  </p>
+ </div>
 
 </section>
 
 
-<!-- SETTINGS -->
+<!-- ALT MENÜ -->
 
-<section id="settings" class="page">
+<nav class="bottomNav">
 
-    <h1 class="analysisTitle">
-        Ayarlar
-    </h1>
+ <button class="navButton active"
+  onclick="openPage('home')">
+  <span>⌂</span>
+  Ana Sayfa
+ </button>
 
+ <button class="navButton"
+  onclick="openPage('analysis')">
+  <span>🩺</span>
+  Analiz
+ </button>
 
-    <div class="card">
+ <button class="navButton"
+  onclick="openPage('labs')">
+  <span>🧪</span>
+  Tahlil
+ </button>
 
-        <div class="cardRow">
+ <button class="navButton"
+  onclick="openPage('chat')">
+  <span>💬</span>
+  Sohbet
+ </button>
 
-            <div class="cardIcon">
-                🔔
-            </div>
+ <button class="navButton"
+  onclick="openPage('profile')">
+  <span>👤</span>
+  Profil
+ </button>
 
-            <div>
-
-                <h3>
-                    Bildirimler
-                </h3>
-
-                <p>
-                    Bildirim ayarları
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="cardRow">
-
-            <div class="cardIcon">
-                🌙
-            </div>
-
-            <div>
-
-                <h3>
-                    Koyu Tema
-                </h3>
-
-                <p>
-                    Tanicon koyu tema kullanıyor.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="cardRow">
-
-            <div class="cardIcon">
-                🔐
-            </div>
-
-            <div>
-
-                <h3>
-                    Gizlilik
-                </h3>
-
-                <p>
-                    Sağlık bilgileriniz hassas veridir.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- BOTTOM NAV -->
-
-<div class="bottomNav">
-
-    <button
-        class="navButton active"
-        onclick="openPage('home')">
-
-        <span>⌂</span>
-        Ana Sayfa
-
-    </button>
-
-
-    <button
-        class="navButton"
-        onclick="openPage('analysis')">
-
-        <span>🧠</span>
-        Analiz
-
-    </button>
-
-
-    <button
-        class="navButton"
-        onclick="openPage('chat')">
-
-        <span>💬</span>
-        Sohbet
-
-    </button>
-
-
-    <button
-        class="navButton"
-        onclick="openPage('history')">
-
-        <span>📋</span>
-        Geçmiş
-
-    </button>
-
-
-    <button
-        class="navButton"
-        onclick="openPage('profile')">
-
-        <span>👤</span>
-        Profil
-
-    </button>
-
-</div>
+</nav>
 
 </div>
 
 
 <script>
 
-/* --------------------------------
-   SAYFA DEĞİŞTİRME
--------------------------------- */
-
-function openPage(pageName) {
-
-    const pages =
-        document.querySelectorAll(".page");
-
-    pages.forEach(function(page) {
-
-        page.classList.remove("active");
-
-    });
-
-
-    const selected =
-        document.getElementById(pageName);
-
-    if (selected) {
-
-        selected.classList.add("active");
-
-    }
-
-
-    const buttons =
-        document.querySelectorAll(".navButton");
-
-    buttons.forEach(function(button) {
-
-        button.classList.remove("active");
-
-    });
-
-
-    if (pageName === "home") {
-        buttons[0].classList.add("active");
-    }
-
-    if (pageName === "analysis") {
-        buttons[1].classList.add("active");
-    }
-
-    if (pageName === "chat") {
-        buttons[2].classList.add("active");
-    }
-
-    if (pageName === "history") {
-        buttons[3].classList.add("active");
-    }
-
-    if (pageName === "profile") {
-        buttons[4].classList.add("active");
-    }
-
-}
-
-
-/* --------------------------------
-   CLOUDFLARE WORKER
--------------------------------- */
-
 const AI_URL =
-    "https://tanicon-ai.kaangokahmetoglu.workers.dev/";
+"https://tanicon-ai.kaangokahmetoglu.workers.dev/";
 
 
-/* --------------------------------
-   BELİRTİ ANALİZİ
--------------------------------- */
+function openPage(name){
 
-async function analyze() {
+ document.querySelectorAll(".page")
+ .forEach(p=>p.classList.remove("active"));
 
-    const symptoms =
-        document.getElementById("symptoms")
-        .value
-        .trim();
+ const page=document.getElementById(name);
 
+ if(page){
+  page.classList.add("active");
+ }
 
-    if (symptoms === "") {
+ const buttons=document.querySelectorAll(".navButton");
 
-        alert(
-            "Lütfen önce belirtilerinizi yazın."
-        );
+ buttons.forEach(b=>b.classList.remove("active"));
 
-        return;
+ const map={
+  home:0,
+  analysis:1,
+  labs:2,
+  chat:3,
+  profile:4
+ };
 
-    }
+ if(map[name]!==undefined){
+  buttons[map[name]].classList.add("active");
+ }
 
-
-    const result =
-        document.getElementById("result");
-
-
-    const resultText =
-        document.getElementById("resultText");
-
-
-    const button =
-        document.getElementById("analyzeButton");
-
-
-    result.classList.add("active");
-
-
-    button.disabled = true;
-
-
-    button.innerText =
-        "🧠 Analiz ediliyor...";
-
-
-    resultText.innerHTML =
-        "Tanicon AI belirtilerinizi değerlendiriyor...";
-
-
-    try {
-
-        const response =
-            await fetch(
-                AI_URL,
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body: JSON.stringify({
-                        message: symptoms
-                    })
-                }
-            );
-
-
-        const data =
-            await response.json();
-
-
-        if (
-            !response.ok ||
-            !data.success
-        ) {
-
-            throw new Error(
-                data.error ||
-                "AI yanıtı alınamadı."
-            );
-
-        }
-
-
-        resultText.innerHTML =
-            formatAIResponse(
-                data.answer
-            );
-
-
-    } catch (error) {
-
-        console.error(error);
-
-
-        resultText.innerHTML =
-            `
-            <strong>❌ Bağlantı hatası</strong>
-            <br><br>
-            Tanicon AI şu anda yanıt veremedi.
-            <br><br>
-            Lütfen internet bağlantınızı kontrol
-            edip tekrar deneyin.
-            `;
-
-    }
-
-
-    button.disabled = false;
-
-
-    button.innerText =
-        "🔍 Belirtileri Analiz Et";
+ if(name==="history"){
+  loadHistory();
+ }
 
 }
 
 
-/* --------------------------------
-   AI CEVABINI GÖRSELLEŞTİR
--------------------------------- */
+/* BELİRTİ ANALİZİ */
 
-function formatAIResponse(text) {
+async function analyze(){
 
-    if (!text) {
+ const symptoms=
+ document.getElementById("symptoms").value.trim();
 
-        return "AI'dan cevap alınamadı.";
+ if(!symptoms){
+  alert("Lütfen belirtilerinizi yazın.");
+  return;
+ }
 
-    }
+ const age=
+ document.getElementById("age").value;
 
+ const meds=
+ document.getElementById("medications").value;
 
-    let formatted =
-        String(text);
+ const button=
+ document.getElementById("analyzeButton");
 
+ const result=
+ document.getElementById("result");
 
-    formatted =
-        formatted
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        );
+ const resultText=
+ document.getElementById("resultText");
 
+ result.classList.add("active");
 
-    formatted =
-        formatted
-        .replace(
-            /\*\*(.*?)\*\*/g,
-            "<strong>$1</strong>"
-        );
+ button.disabled=true;
 
+ button.innerText="🧠 Analiz ediliyor...";
 
-    formatted =
-        formatted
-        .replace(
-            /\n/g,
-            "<br>"
-        );
+ resultText.innerHTML=
+ "Tanicon AI değerlendiriyor...";
 
+ try{
 
-    return formatted;
+  const response=await fetch(AI_URL,{
+   method:"POST",
+   headers:{
+    "Content-Type":"application/json"
+   },
+   body:JSON.stringify({
+    message:
+    `Kullanıcının yaşı: ${age||"belirtilmedi"}
+
+Kullandığı ilaçlar:
+${meds||"belirtilmedi"}
+
+Belirtileri:
+${symptoms}
+
+Bu bilgileri tıbbi tanı koymadan değerlendir.`
+   })
+  });
+
+  const data=await response.json();
+
+  if(!response.ok||!data.success){
+   throw new Error(data.error);
+  }
+
+  resultText.innerHTML=
+  formatText(data.answer);
+
+  detectEmergency(data.answer);
+
+  saveHistory(
+   "Belirti Analizi",
+   symptoms
+  );
+
+ }catch(error){
+
+  resultText.innerHTML=
+  "❌ AI bağlantısında bir sorun oluştu.";
+
+ }
+
+ button.disabled=false;
+
+ button.innerText="🔍 Belirtileri Analiz Et";
 
 }
 
 
-/* --------------------------------
-   SOHBET
--------------------------------- */
+/* ACİL DURUM */
 
-async function sendChat() {
+function detectEmergency(text){
 
-    const input =
-        document.getElementById(
-            "chatInput"
-        );
+ const words=[
+  "acil",
+  "112",
+  "hemen",
+  "bilinç kaybı",
+  "şiddetli nefes",
+  "göğüs ağrısı",
+  "felç"
+ ];
 
+ const found=
+ words.some(word=>
+  text.toLowerCase().includes(word)
+ );
 
-    const messages =
-        document.getElementById(
-            "chatMessages"
-        );
+ const emergency=
+ document.getElementById("emergency");
 
+ emergency.classList.toggle(
+  "active",
+  found
+ );
 
-    const text =
-        input.value.trim();
-
-
-    if (text === "") {
-
-        return;
-
-    }
-
-
-    const userMessage =
-        document.createElement(
-            "div"
-        );
+}
 
 
-    userMessage.className =
-        "message user";
+/* TAHLİL DOSYASI */
+
+let selectedLabFile=null;
 
 
-    userMessage.textContent =
-        text;
+function selectLabFile(event){
+
+ selectedLabFile=
+ event.target.files[0];
+
+ const name=
+ document.getElementById("fileName");
+
+ const button=
+ document.getElementById("labButton");
+
+ const preview=
+ document.getElementById("preview");
+
+ if(!selectedLabFile){
+  button.disabled=true;
+  return;
+ }
+
+ name.textContent=
+ "Seçilen dosya: "+
+ selectedLabFile.name;
+
+ button.disabled=false;
+
+ if(
+  selectedLabFile.type.startsWith("image/")
+ ){
+
+  const reader=new FileReader();
+
+  reader.onload=function(e){
+
+   preview.src=e.target.result;
+
+   preview.style.display="block";
+
+  };
+
+  reader.readAsDataURL(selectedLabFile);
+
+ }else{
+
+  preview.style.display="none";
+
+ }
+
+}
 
 
-    messages.appendChild(
-        userMessage
-    );
+/* TAHLİL ANALİZİ
+   Şimdilik arayüz testi.
+   Gerçek dosya → AI bağlantısını
+   sonraki Worker aşamasında ekleyeceğiz.
+*/
+
+async function analyzeLab(){
+
+ if(!selectedLabFile){
+  return;
+ }
+
+ const result=
+ document.getElementById("labResult");
+
+ const text=
+ document.getElementById("labResultText");
+
+ result.classList.add("active");
+
+ text.innerHTML=
+ `
+ <strong>📄 Dosya hazır.</strong><br><br>
+ ${selectedLabFile.name}<br><br>
+ Tahlil dosyasının AI tarafından okunması
+ bir sonraki Worker güncellemesinde aktif edilecek.
+ `;
+
+}
 
 
-    input.value = "";
+/* İLAÇ */
+
+async function drugInfo(){
+
+ const drug=
+ document.getElementById("drugInput")
+ .value.trim();
+
+ if(!drug){
+  alert("Lütfen ilaç adını yazın.");
+  return;
+ }
+
+ const result=
+ document.getElementById("drugResult");
+
+ const text=
+ document.getElementById("drugText");
+
+ result.classList.add("active");
+
+ text.innerHTML=
+ "💊 Bilgi hazırlanıyor...";
+
+ try{
+
+  const response=await fetch(AI_URL,{
+   method:"POST",
+   headers:{
+    "Content-Type":"application/json"
+   },
+   body:JSON.stringify({
+    message:
+`"${drug}" adlı ilaç hakkında genel sağlık bilgisi ver.
+
+Şunları açıkla:
+- Ne amaçla kullanılır?
+- Yaygın yan etkiler nelerdir?
+- Önemli uyarılar nelerdir?
+- Hangi durumlarda doktor veya eczacıya danışılmalıdır?
+
+Kişiye özel doz veya reçete yazma.`
+   })
+  });
+
+  const data=await response.json();
+
+  if(!response.ok||!data.success){
+   throw new Error();
+  }
+
+  text.innerHTML=
+  formatText(data.answer);
+
+ }catch(e){
+
+  text.innerHTML=
+  "❌ Bilgi alınamadı.";
+
+ }
+
+}
 
 
-    const loading =
-        document.createElement(
-            "div"
-        );
+/* BİTKİSEL */
+
+async function herbalInfo(){
+
+ const herb=
+ document.getElementById("herbalInput")
+ .value.trim();
+
+ if(!herb){
+  alert("Lütfen bitkisel ürün adını yazın.");
+  return;
+ }
+
+ const result=
+ document.getElementById("herbalResult");
+
+ const text=
+ document.getElementById("herbalText");
+
+ result.classList.add("active");
+
+ text.innerHTML=
+ "🌿 Bilgi hazırlanıyor...";
+
+ try{
+
+  const response=await fetch(AI_URL,{
+   method:"POST",
+   headers:{
+    "Content-Type":"application/json"
+   },
+   body:JSON.stringify({
+    message:
+`"${herb}" adlı bitkisel ürün hakkında genel bilgi ver.
+
+Şunları açıkla:
+- Hangi amaçlarla kullanılır?
+- Bilimsel kanıt düzeyi nedir?
+- Olası yan etkileri nelerdir?
+- İlaçlarla önemli etkileşimleri olabilir mi?
+- Kimler özellikle dikkat etmelidir?
+
+"Doğal olduğu için güvenlidir" varsayımında bulunma.
+Kişiye özel tedavi veya doz yazma.`
+   })
+  });
+
+  const data=await response.json();
+
+  if(!response.ok||!data.success){
+   throw new Error();
+  }
+
+  text.innerHTML=
+  formatText(data.answer);
+
+ }catch(e){
+
+  text.innerHTML=
+  "❌ Bilgi alınamadı.";
+
+ }
+
+}
 
 
-    loading.className =
-        "message ai";
+/* SOHBET */
+
+async function sendChat(){
+
+ const input=
+ document.getElementById("chatInput");
+
+ const messages=
+ document.getElementById("chatMessages");
+
+ const text=
+ input.value.trim();
+
+ if(!text)return;
+
+ const user=
+ document.createElement("div");
+
+ user.className="message user";
+
+ user.textContent=text;
+
+ messages.appendChild(user);
+
+ input.value="";
+
+ const ai=
+ document.createElement("div");
+
+ ai.className="message ai";
+
+ ai.textContent="🧠 Düşünüyorum...";
+
+ messages.appendChild(ai);
+
+ messages.scrollTop=
+ messages.scrollHeight;
+
+ try{
+
+  const response=await fetch(AI_URL,{
+   method:"POST",
+   headers:{
+    "Content-Type":"application/json"
+   },
+   body:JSON.stringify({
+    message:text
+   })
+  });
+
+  const data=await response.json();
+
+  if(!response.ok||!data.success){
+   throw new Error();
+  }
+
+  ai.innerHTML=
+  formatText(data.answer);
+
+ }catch(e){
+
+  ai.textContent=
+  "❌ AI bağlantısında bir sorun oluştu.";
+
+ }
+
+ messages.scrollTop=
+ messages.scrollHeight;
+
+}
 
 
-    loading.textContent =
-        "🧠 Düşünüyorum...";
+/* METİN */
+
+function formatText(text){
+
+ if(!text)return "Yanıt alınamadı.";
+
+ return String(text)
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>")
+ .replace(/\n/g,"<br>");
+
+}
 
 
-    messages.appendChild(
-        loading
-    );
+/* GEÇMİŞ */
+
+function saveHistory(type,text){
+
+ const history=
+ JSON.parse(
+  localStorage.getItem("taniconHistory")
+  ||"[]"
+ );
+
+ history.unshift({
+  type:type,
+  text:text,
+  date:new Date().toLocaleString("tr-TR")
+ });
+
+ localStorage.setItem(
+  "taniconHistory",
+  JSON.stringify(history.slice(0,30))
+ );
+
+}
 
 
-    messages.scrollTop =
-        messages.scrollHeight;
+function loadHistory(){
+
+ const container=
+ document.getElementById("historyList");
+
+ const history=
+ JSON.parse(
+  localStorage.getItem("taniconHistory")
+  ||"[]"
+ );
+
+ if(!history.length){
+
+  container.innerHTML=
+  `<div class="historyEmpty">
+   Henüz kayıtlı analiz yok.
+  </div>`;
+
+  return;
+
+ }
+
+ container.innerHTML=
+ history.map(item=>`
+
+ <div class="card">
+
+  <h3>${escapeHTML(item.type)}</h3>
+
+  <p>${escapeHTML(item.date)}</p>
+
+  <p style="margin-top:10px">
+   ${escapeHTML(item.text).substring(0,160)}
+  </p>
+
+ </div>
+
+ `).join("");
+
+}
 
 
-    try {
+function escapeHTML(text){
 
-        const response =
-            await fetch(
-                AI_URL,
-                {
-                    method: "POST",
+ return String(text)
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;")
+ .replace(/'/g,"&#039;");
 
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body: JSON.stringify({
-                        message: text
-                    })
-                }
-            );
+}
 
 
-        const data =
-            await response.json();
+/* PROFİL */
 
+function saveProfile(){
 
-        if (
-            !response.ok ||
-            !data.success
-        ) {
+ const age=
+ document.getElementById("profileAge").value;
 
-            throw new Error(
-                data.error ||
-                "AI yanıtı alınamadı."
-            );
+ const name=
+ document.getElementById("profileName").value;
 
-        }
+ localStorage.setItem(
+  "taniconProfile",
+  JSON.stringify({
+   age:age,
+   name:name
+  })
+ );
 
-
-        loading.innerHTML =
-            formatAIResponse(
-                data.answer
-            );
-
-
-    } catch (error) {
-
-        console.error(error);
-
-
-        loading.innerHTML =
-            "❌ AI bağlantısında bir sorun oluştu.";
-
-    }
-
-
-    messages.scrollTop =
-        messages.scrollHeight;
+ alert("Profil kaydedildi.");
 
 }
 
