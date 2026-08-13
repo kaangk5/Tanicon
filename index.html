@@ -32,7 +32,7 @@ button {
     background: #151919;
 }
 
-/* ---------------- HEADER ---------------- */
+/* HEADER */
 
 .header {
     padding: 22px 20px;
@@ -74,7 +74,7 @@ button {
     font-size: 20px;
 }
 
-/* ---------------- PAGES ---------------- */
+/* PAGES */
 
 .page {
     display: none;
@@ -85,7 +85,7 @@ button {
     display: block;
 }
 
-/* ---------------- HOME ---------------- */
+/* HOME */
 
 .hero {
     text-align: center;
@@ -124,20 +124,21 @@ button {
 
 .primaryButton {
     width: 100%;
-    height: 60px;
+    min-height: 60px;
     border-radius: 20px;
     background: #50d0cc;
     color: #101414;
     font-size: 18px;
     font-weight: 700;
     margin-top: 30px;
+    padding: 12px 20px;
 }
 
 .primaryButton:active {
     transform: scale(.98);
 }
 
-/* ---------------- CARDS ---------------- */
+/* CARDS */
 
 .sectionTitle {
     font-size: 21px;
@@ -160,6 +161,7 @@ button {
 .cardIcon {
     width: 48px;
     height: 48px;
+    min-width: 48px;
     border-radius: 15px;
     background: #2b3535;
     display: flex;
@@ -178,7 +180,7 @@ button {
     line-height: 1.4;
 }
 
-/* ---------------- ANALYSIS ---------------- */
+/* ANALYSIS */
 
 .analysisTitle {
     font-size: 28px;
@@ -215,7 +217,7 @@ textarea:focus {
     margin-top: 10px;
 }
 
-/* ---------------- RESULT ---------------- */
+/* RESULT */
 
 .result {
     display: none;
@@ -236,11 +238,9 @@ textarea:focus {
     margin-bottom: 12px;
 }
 
-.possible {
-    padding: 13px;
-    background: #2b3333;
-    border-radius: 12px;
-    margin-top: 8px;
+.resultText {
+    color: #e6eeee;
+    line-height: 1.65;
 }
 
 .warning {
@@ -253,7 +253,7 @@ textarea:focus {
     font-size: 14px;
 }
 
-/* ---------------- CHAT ---------------- */
+/* CHAT */
 
 .chatMessages {
     min-height: 350px;
@@ -294,6 +294,7 @@ textarea:focus {
     color: white;
     padding: 0 16px;
     outline: none;
+    font-size: 15px;
 }
 
 .sendButton {
@@ -304,7 +305,7 @@ textarea:focus {
     font-size: 22px;
 }
 
-/* ---------------- PROFILE ---------------- */
+/* PROFILE */
 
 .profile {
     text-align: center;
@@ -333,7 +334,7 @@ textarea:focus {
     margin-top: 5px;
 }
 
-/* ---------------- BOTTOM NAV ---------------- */
+/* BOTTOM NAV */
 
 .bottomNav {
     position: fixed;
@@ -348,12 +349,13 @@ textarea:focus {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    z-index: 100;
 }
 
 .navButton {
     background: transparent;
     color: #7f8989;
-    font-size: 12px;
+    font-size: 11px;
     text-align: center;
 }
 
@@ -367,7 +369,7 @@ textarea:focus {
     color: #50d0cc;
 }
 
-/* ---------------- MOBILE ---------------- */
+/* MOBILE */
 
 @media (min-width: 601px) {
 
@@ -393,12 +395,23 @@ textarea:focus {
 <div class="header">
 
     <div class="logo">
-        <div class="logoIcon">+</div>
-        <div class="logoText">Tanicon</div>
+
+        <div class="logoIcon">
+            +
+        </div>
+
+        <div class="logoText">
+            Tanicon
+        </div>
+
     </div>
 
-    <button class="menuButton" onclick="openPage('settings')">
+    <button
+        class="menuButton"
+        onclick="openPage('settings')">
+
         ⚙
+
     </button>
 
 </div>
@@ -414,7 +427,9 @@ textarea:focus {
             ♡
         </div>
 
-        <h1>Tanicon</h1>
+        <h1>
+            Tanicon
+        </h1>
 
         <h2>
             Yapay Zeka Destekli<br>
@@ -452,11 +467,16 @@ textarea:focus {
             </div>
 
             <div>
-                <h3>AI Destekli Analiz</h3>
+
+                <h3>
+                    AI Destekli Analiz
+                </h3>
+
                 <p>
                     Belirtilerinizi analiz ederek
                     olası açıklamalar hakkında bilgi verir.
                 </p>
+
             </div>
 
         </div>
@@ -473,11 +493,16 @@ textarea:focus {
             </div>
 
             <div>
-                <h3>Akıllı Sohbet</h3>
+
+                <h3>
+                    Akıllı Sohbet
+                </h3>
+
                 <p>
                     Sağlıkla ilgili sorularınızı
                     doğal dille sorabilirsiniz.
                 </p>
+
             </div>
 
         </div>
@@ -494,11 +519,16 @@ textarea:focus {
             </div>
 
             <div>
-                <h3>Gizlilik</h3>
+
+                <h3>
+                    Gizlilik
+                </h3>
+
                 <p>
                     Sağlık bilgilerinizin korunmasına
                     önem veren bir yapı.
                 </p>
+
             </div>
 
         </div>
@@ -527,13 +557,17 @@ textarea:focus {
         placeholder="Örneğin: 2 gündür başım ağrıyor, halsizim ve zaman zaman midem bulanıyor..."
     ></textarea>
 
+
     <p class="example">
+
         💡 Belirtilerin ne zaman başladığını ve
         ne kadar sürdüğünü belirtmek yardımcı olabilir.
+
     </p>
 
 
     <button
+        id="analyzeButton"
         class="primaryButton"
         onclick="analyze()">
 
@@ -542,26 +576,22 @@ textarea:focus {
     </button>
 
 
-    <div id="result" class="result">
+    <div
+        id="result"
+        class="result">
 
         <div class="resultCard">
 
-            <h3>📋 Genel Değerlendirme</h3>
+            <h3>
+                🧠 Tanicon AI Değerlendirmesi
+            </h3>
 
-            <p id="resultText">
-                Belirtileriniz değerlendiriliyor...
-            </p>
+            <div
+                id="resultText"
+                class="resultText">
 
-        </div>
+                Belirtileriniz analiz edilecek.
 
-
-        <div class="resultCard">
-
-            <h3>🧠 Olası Açıklamalar</h3>
-
-            <div class="possible">
-                Bu bölüm AI bağlantısı
-                kurulduğunda otomatik doldurulacak.
             </div>
 
         </div>
@@ -569,9 +599,10 @@ textarea:focus {
 
         <div class="warning">
 
-            ⚠️ Bu değerlendirme tıbbi tanı değildir.
-            Ciddi veya acil belirtileriniz varsa
-            gecikmeden bir sağlık kuruluşuna başvurun.
+            ⚠️ Tanicon tarafından verilen bilgiler
+            tıbbi tanı değildir ve doktor muayenesinin
+            yerini tutmaz. Ciddi veya acil belirtileriniz
+            varsa gecikmeden sağlık kuruluşuna başvurun.
 
         </div>
 
@@ -587,6 +618,11 @@ textarea:focus {
     <h1 class="analysisTitle">
         Tanicon AI
     </h1>
+
+    <p class="analysisDescription">
+        Sağlıkla ilgili sorunuzu yazabilirsiniz.
+    </p>
+
 
     <div
         id="chatMessages"
@@ -644,15 +680,20 @@ textarea:focus {
         <div class="cardRow">
 
             <div class="cardIcon">
-                🩺
+                📋
             </div>
 
             <div>
-                <h3>Henüz geçmiş yok</h3>
+
+                <h3>
+                    Henüz geçmiş yok
+                </h3>
+
                 <p>
                     İlk analizinizden sonra
                     burada görünecek.
                 </p>
+
             </div>
 
         </div>
@@ -672,7 +713,9 @@ textarea:focus {
             👤
         </div>
 
-        <h2>Profil</h2>
+        <h2>
+            Profil
+        </h2>
 
         <p>
             Sağlık bilgilerinizi buradan
@@ -688,6 +731,7 @@ textarea:focus {
 
 
     <div class="card">
+
         <div class="cardRow">
 
             <div class="cardIcon">
@@ -695,15 +739,24 @@ textarea:focus {
             </div>
 
             <div>
-                <h3>Yaş</h3>
-                <p>Henüz belirtilmedi</p>
+
+                <h3>
+                    Yaş
+                </h3>
+
+                <p>
+                    Henüz belirtilmedi
+                </p>
+
             </div>
 
         </div>
+
     </div>
 
 
     <div class="card">
+
         <div class="cardRow">
 
             <div class="cardIcon">
@@ -711,11 +764,19 @@ textarea:focus {
             </div>
 
             <div>
-                <h3>Sağlık Geçmişi</h3>
-                <p>Henüz belirtilmedi</p>
+
+                <h3>
+                    Sağlık Geçmişi
+                </h3>
+
+                <p>
+                    Henüz belirtilmedi
+                </p>
+
             </div>
 
         </div>
+
     </div>
 
 </section>
@@ -739,10 +800,15 @@ textarea:focus {
             </div>
 
             <div>
-                <h3>Bildirimler</h3>
+
+                <h3>
+                    Bildirimler
+                </h3>
+
                 <p>
                     Bildirim ayarları
                 </p>
+
             </div>
 
         </div>
@@ -759,10 +825,15 @@ textarea:focus {
             </div>
 
             <div>
-                <h3>Koyu Tema</h3>
+
+                <h3>
+                    Koyu Tema
+                </h3>
+
                 <p>
                     Tanicon koyu tema kullanıyor.
                 </p>
+
             </div>
 
         </div>
@@ -779,10 +850,15 @@ textarea:focus {
             </div>
 
             <div>
-                <h3>Gizlilik</h3>
+
+                <h3>
+                    Gizlilik
+                </h3>
+
                 <p>
                     Sağlık bilgileriniz hassas veridir.
                 </p>
+
             </div>
 
         </div>
@@ -852,6 +928,10 @@ textarea:focus {
 
 <script>
 
+/* --------------------------------
+   SAYFA DEĞİŞTİRME
+-------------------------------- */
+
 function openPage(pageName) {
 
     const pages =
@@ -883,19 +963,55 @@ function openPage(pageName) {
 
     });
 
+
+    if (pageName === "home") {
+        buttons[0].classList.add("active");
+    }
+
+    if (pageName === "analysis") {
+        buttons[1].classList.add("active");
+    }
+
+    if (pageName === "chat") {
+        buttons[2].classList.add("active");
+    }
+
+    if (pageName === "history") {
+        buttons[3].classList.add("active");
+    }
+
+    if (pageName === "profile") {
+        buttons[4].classList.add("active");
+    }
+
 }
 
 
-/* ANALİZ */
+/* --------------------------------
+   CLOUDFLARE WORKER
+-------------------------------- */
 
-function analyze() {
+const AI_URL =
+    "https://tanicon-ai.kaangokahmetoglu.workers.dev/";
+
+
+/* --------------------------------
+   BELİRTİ ANALİZİ
+-------------------------------- */
+
+async function analyze() {
 
     const symptoms =
-        document.getElementById("symptoms").value.trim();
+        document.getElementById("symptoms")
+        .value
+        .trim();
+
 
     if (symptoms === "") {
 
-        alert("Lütfen önce belirtilerinizi yazın.");
+        alert(
+            "Lütfen önce belirtilerinizi yazın."
+        );
 
         return;
 
@@ -905,77 +1021,283 @@ function analyze() {
     const result =
         document.getElementById("result");
 
+
     const resultText =
         document.getElementById("resultText");
+
+
+    const button =
+        document.getElementById("analyzeButton");
 
 
     result.classList.add("active");
 
 
+    button.disabled = true;
+
+
+    button.innerText =
+        "🧠 Analiz ediliyor...";
+
+
     resultText.innerHTML =
-        "Belirtileriniz alındı.<br><br>" +
-        "Gerçek AI bağlantısı bir sonraki " +
-        "aşamada eklenecek. Bu sürüm yalnızca " +
-        "arayüz testidir.";
+        "Tanicon AI belirtilerinizi değerlendiriyor...";
+
+
+    try {
+
+        const response =
+            await fetch(
+                AI_URL,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        message: symptoms
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !response.ok ||
+            !data.success
+        ) {
+
+            throw new Error(
+                data.error ||
+                "AI yanıtı alınamadı."
+            );
+
+        }
+
+
+        resultText.innerHTML =
+            formatAIResponse(
+                data.answer
+            );
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        resultText.innerHTML =
+            `
+            <strong>❌ Bağlantı hatası</strong>
+            <br><br>
+            Tanicon AI şu anda yanıt veremedi.
+            <br><br>
+            Lütfen internet bağlantınızı kontrol
+            edip tekrar deneyin.
+            `;
+
+    }
+
+
+    button.disabled = false;
+
+
+    button.innerText =
+        "🔍 Belirtileri Analiz Et";
 
 }
 
 
-/* CHAT */
+/* --------------------------------
+   AI CEVABINI GÖRSELLEŞTİR
+-------------------------------- */
 
-function sendChat() {
+function formatAIResponse(text) {
+
+    if (!text) {
+
+        return "AI'dan cevap alınamadı.";
+
+    }
+
+
+    let formatted =
+        String(text);
+
+
+    formatted =
+        formatted
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        );
+
+
+    formatted =
+        formatted
+        .replace(
+            /\*\*(.*?)\*\*/g,
+            "<strong>$1</strong>"
+        );
+
+
+    formatted =
+        formatted
+        .replace(
+            /\n/g,
+            "<br>"
+        );
+
+
+    return formatted;
+
+}
+
+
+/* --------------------------------
+   SOHBET
+-------------------------------- */
+
+async function sendChat() {
 
     const input =
-        document.getElementById("chatInput");
+        document.getElementById(
+            "chatInput"
+        );
+
 
     const messages =
-        document.getElementById("chatMessages");
+        document.getElementById(
+            "chatMessages"
+        );
 
 
     const text =
         input.value.trim();
 
 
-    if (text === "") return;
+    if (text === "") {
+
+        return;
+
+    }
 
 
-    const user =
-        document.createElement("div");
+    const userMessage =
+        document.createElement(
+            "div"
+        );
 
-    user.className =
+
+    userMessage.className =
         "message user";
 
-    user.textContent =
+
+    userMessage.textContent =
         text;
 
 
-    messages.appendChild(user);
+    messages.appendChild(
+        userMessage
+    );
 
 
     input.value = "";
 
 
-    setTimeout(function() {
-
-        const ai =
-            document.createElement("div");
-
-        ai.className =
-            "message ai";
-
-        ai.textContent =
-            "Mesajınızı aldım. Gerçek yapay zeka " +
-            "bağlantısını bir sonraki aşamada " +
-            "ekleyeceğiz.";
+    const loading =
+        document.createElement(
+            "div"
+        );
 
 
-        messages.appendChild(ai);
+    loading.className =
+        "message ai";
 
 
-        messages.scrollTop =
-            messages.scrollHeight;
+    loading.textContent =
+        "🧠 Düşünüyorum...";
 
-    }, 500);
+
+    messages.appendChild(
+        loading
+    );
+
+
+    messages.scrollTop =
+        messages.scrollHeight;
+
+
+    try {
+
+        const response =
+            await fetch(
+                AI_URL,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        message: text
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !response.ok ||
+            !data.success
+        ) {
+
+            throw new Error(
+                data.error ||
+                "AI yanıtı alınamadı."
+            );
+
+        }
+
+
+        loading.innerHTML =
+            formatAIResponse(
+                data.answer
+            );
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        loading.innerHTML =
+            "❌ AI bağlantısında bir sorun oluştu.";
+
+    }
+
+
+    messages.scrollTop =
+        messages.scrollHeight;
 
 }
 
